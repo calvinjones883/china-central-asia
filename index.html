@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China – Central Asia Relations</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0e1117;
+  --paper: #f4f1eb;
+  --accent: #c8380a;
+  --accent2: #1a4a6b;
+  --rule: #d4cfc4;
+  --muted: #6b6660;
+  --card: #ffffff;
+  --tag-bg: #e8e4dc;
+  --green: #2d6a3f;
+  --amber: #b87200;
+  --red: #c8380a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 2rem;
+  height: 52px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.nav-brand {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper);
+  opacity: 0.7;
+  margin-right: 2rem;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar { display: none; }
+
+.nav-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244,241,235,0.6);
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--paper);
+  border-bottom-color: var(--accent);
+}
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 40%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(200,56,10,0.04) 20px,
+    rgba(200,56,10,0.04) 21px
+  );
+}
+
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: rgba(244,241,235,0.65);
+  max-width: 560px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--paper);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(244,241,235,0.5);
+  margin-top: 4px;
+}
+
+/* SECTIONS */
+section {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: none;
+}
+
+section.active { display: block; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.section-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.card:hover { background: #fafaf8; }
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--tag-bg);
+  color: var(--muted);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.tag.status-operational { background: #d4edd9; color: var(--green); }
+.tag.status-construction { background: #fdefd6; color: var(--amber); }
+.tag.status-planned { background: #e8e4dc; color: var(--muted); }
+.tag.status-signed { background: #dce8f4; color: var(--accent2); }
+.tag.status-in-force { background: #d4edd9; color: var(--green); }
+
+/* TRADE TABLE */
+.trade-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.trade-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 2px solid var(--rule);
+  background: var(--paper);
+}
+
+.trade-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.trade-table tr:hover td { background: rgba(0,0,0,0.02); }
+
+.trade-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent2);
+}
+
+.trade-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.bar-wrap {
+  height: 6px;
+  background: var(--rule);
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--accent2);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+/* CLAIMS */
+.claim-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+
+.claim-item {
+  background: var(--card);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.claim-marker {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.claim-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.claim-countries {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--rule);
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.95rem;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.tl-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.tl-title {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.tl-type {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* OVERVIEW GRID */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+
+.ov-cell {
+  background: var(--card);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.ov-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.ov-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+.info-block { margin-bottom: 1.5rem; }
+.info-block h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+  font-size: 13px;
+  background: var(--tag-bg);
+  padding: 5px 12px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  color: rgba(244,241,235,0.4);
+  text-align: center;
+  padding: 2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">GEO · World Affairs</span>
+  <div class="nav-links">
+    <a class="nav-link active" onclick="showSection('overview')">Overview</a>
+    <a class="nav-link" onclick="showSection('bilateral')">Bilateral relations</a>
+    <a class="nav-link" onclick="showSection('projects')">Projects</a>
+    <a class="nav-link" onclick="showSection('agreements')">Agreements</a>
+    <a class="nav-link" onclick="showSection('institutions')">Institutions</a>
+    <a class="nav-link" onclick="showSection('claims')">Claims</a>
+    <a class="nav-link" onclick="showSection('trade')">Trade</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">China – Central Asia Relations Ontology · Starter Graph</div>
+  <h1>China and Central Asia:<br>A Structured Intelligence Graph</h1>
+  <p class="hero-sub">A knowledge graph dataset covering bilateral relationships, infrastructure projects, multilateral mechanisms, agreements, and contested claims across China and the five Central Asian states.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">71</div>
+      <div class="hero-stat-label">Total entities</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">Central Asian states</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">13</div>
+      <div class="hero-stat-label">Infrastructure projects</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">US$94.8B</div>
+      <div class="hero-stat-label">China–CA trade 2024</div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview" class="active">
+  <div class="section-header">
+    <h2 class="section-title">Dataset overview</h2>
+    <span class="section-count">71 entities · 9 categories</span>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-cell"><div class="ov-num">8</div><div class="ov-label">Countries & regions</div></div>
+    <div class="ov-cell"><div class="ov-num">5</div><div class="ov-label">Bilateral relationships</div></div>
+    <div class="ov-cell"><div class="ov-num">6</div><div class="ov-label">Multilateral mechanisms</div></div>
+    <div class="ov-cell"><div class="ov-num">13</div><div class="ov-label">Projects & corridors</div></div>
+    <div class="ov-cell"><div class="ov-num">12</div><div class="ov-label">Agreements & summits</div></div>
+    <div class="ov-cell"><div class="ov-num">10</div><div class="ov-label">Companies & banks</div></div>
+    <div class="ov-cell"><div class="ov-num">6</div><div class="ov-label">Claims</div></div>
+    <div class="ov-cell"><div class="ov-num">14</div><div class="ov-label">Source documents</div></div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="info-block">
+        <h3>Sectors covered</h3>
+        <div class="pill-list">
+          <span class="pill">Energy</span><span class="pill">Infrastructure</span><span class="pill">Trade</span>
+          <span class="pill">Finance</span><span class="pill">Diplomacy</span><span class="pill">Security</span>
+          <span class="pill">Education & culture</span><span class="pill">Mining & minerals</span>
+        </div>
+      </div>
+      <div class="info-block">
+        <h3>Key topics</h3>
+        <div class="pill-list">
+          <span class="pill">Belt and Road Initiative</span>
+          <span class="pill">China–Central Asia relations</span>
+          <span class="pill">Eurasian connectivity</span>
+          <span class="pill">Energy security</span>
+          <span class="pill">Infrastructure finance</span>
+          <span class="pill">Multilateral diplomacy</span>
+          <span class="pill">Regional security</span>
+          <span class="pill">Xinjiang and borderlands</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-block">
+        <h3>Scope & methodology</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">This dataset models China's relationships with Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, and Uzbekistan as a structured knowledge graph. Entities are typed and linked through controlled relations. Contested geopolitical assertions are modelled as <strong>Claims</strong> — distinct from neutral facts — with source citations. Mainstream entities (China, SCO, BRI) are submitted as stubs for match-and-merge with existing graph nodes.</p>
+      </div>
+      <div class="info-block">
+        <h3>Bounty</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">China–Central Asia Relations Ontology and Starter Graph (Hard) · Geo World Affairs space · v2 accepted</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BILATERAL -->
+<section id="bilateral">
+  <div class="section-header">
+    <h2 class="section-title">Bilateral relationships</h2>
+    <span class="section-count">5 entities</span>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">China–Kazakhstan relations</div>
+      <div class="card-desc">Diplomatic and economic relationship formally established January 1992. Bilateral trade reached US$44 billion in 2024. Signed Treaty on Permanent Good-Neighborly Relations in June 2025.</div>
+      <div class="card-meta">
+        <span class="tag status-operational">Operational since 1992</span>
+        <span class="tag">Energy</span><span class="tag">Infrastructure</span><span class="tag">Trade</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Kyrgyzstan relations</div>
+      <div class="card-desc">Established January 1992. Anchored by the landmark China-Kyrgyzstan-Uzbekistan railway project and Central Asia-China gas pipeline transit role.</div>
+      <div class="card-meta">
+        <span class="tag status-operational">Operational since 1992</span>
+        <span class="tag">Infrastructure</span><span class="tag">Finance</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Tajikistan relations</div>
+      <div class="card-desc">Established January 1992. Characterised by significant Chinese security presence in Gorno-Badakhshan and infrastructure lending concentrated in highway and energy sectors.</div>
+      <div class="card-meta">
+        <span class="tag status-operational">Operational since 1992</span>
+        <span class="tag">Security</span><span class="tag">Infrastructure</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Turkmenistan relations</div>
+      <div class="card-desc">Established January 1992. Dominated by gas exports — Turkmenistan supplies approximately 85–95% of its total exports to China via the Central Asia-China gas pipeline.</div>
+      <div class="card-meta">
+        <span class="tag status-operational">Operational since 1992</span>
+        <span class="tag">Energy</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Uzbekistan relations</div>
+      <div class="card-desc">Established January 1992. Upgraded to all-weather comprehensive strategic partnership in January 2024. Active across energy, railway, and industrial cooperation.</div>
+      <div class="card-meta">
+        <span class="tag status-operational">Operational since 1992</span>
+        <span class="tag">Energy</span><span class="tag">Infrastructure</span><span class="tag">Trade</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <h2 class="section-title">Projects & corridors</h2>
+    <span class="section-count">13 entities</span>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">China–Kyrgyzstan–Uzbekistan railway</div>
+      <div class="card-desc">523 km railway under construction from Kashgar via Kyrgyzstan to Andijan, Uzbekistan. Financing of US$4.7 billion closed December 2025. Groundbreaking ceremony held 27 December 2024.</div>
+      <div class="card-meta"><span class="tag status-construction">Under construction</span><span class="tag">Est. 2030</span><span class="tag">US$4.7B</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Central Asia–China gas pipeline</div>
+      <div class="card-desc">Four-line pipeline system (Lines A–D) transporting natural gas from Turkmenistan via Uzbekistan and Kazakhstan to China. Operational since December 2009.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2009</span><span class="tag">US$7.3B Line A</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Line D of the Central Asia–China gas pipeline</div>
+      <div class="card-desc">Fourth line of the Central Asia-China pipeline system, routed through Tajikistan and Kyrgyzstan. Construction ongoing; Kyrgyz section stalled.</div>
+      <div class="card-meta"><span class="tag status-construction">Under construction</span><span class="tag">US$6.7B est.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Kazakhstan–China oil pipeline</div>
+      <div class="card-desc">2,800 km pipeline from Atyrau in Kazakhstan to Alashankou in Xinjiang. First direct oil pipeline linking Central Asia to China, operational since 2006.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2006</span><span class="tag">US$3B Phase 1</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Khorgos Gateway</div>
+      <div class="card-desc">Largest dry port on the China–Kazakhstan border, serving as a major transshipment hub for rail freight between China and Europe via Central Asia.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2015</span><span class="tag">Dry port</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Khorgos International Centre for Boundary Cooperation</div>
+      <div class="card-desc">Special economic zone straddling the China-Kazakhstan border, enabling visa-free shopping and trade facilitation across national boundaries.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2012</span><span class="tag">Cross-border zone</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Europe Railway Express</div>
+      <div class="card-desc">Scheduled freight rail service connecting Chinese cities to European destinations, transiting Kazakhstan and Russia. Significant growth in volume since 2016.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2011</span><span class="tag">Freight corridor</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Trans-Caspian International Transport Route</div>
+      <div class="card-desc">Multimodal corridor from China via Kazakhstan across the Caspian Sea to Azerbaijan, Georgia, and onward to Europe — bypassing Russia.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Formalised 2014</span><span class="tag">Multimodal</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Galkynysh gas field development</div>
+      <div class="card-desc">One of the world's largest gas fields in Turkmenistan, developed with Chinese financing (CDB US$7.1B) and supplying the Central Asia-China pipeline.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2013</span><span class="tag">US$7.1B CDB</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Amu Darya Right Bank gas project</div>
+      <div class="card-desc">CNPC-operated gas production project in Uzbekistan supplying the Central Asia-China pipeline under a production-sharing contract signed 2007.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2007</span><span class="tag">Energy project</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Third China–Kazakhstan railway link</div>
+      <div class="card-desc">Proposed new rail crossing between China and Kazakhstan, endorsed at the 2025 Astana Summit. Route and financing not yet published.</div>
+      <div class="card-meta"><span class="tag status-planned">Planned</span><span class="tag">Endorsed 2025</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Tajikistan highway phase II restoration</div>
+      <div class="card-desc">Restoration and upgrading of highway infrastructure connecting China and Tajikistan. Under construction; financing details not published.</div>
+      <div class="card-meta"><span class="tag status-construction">Under construction</span><span class="tag">Infrastructure</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Zhetysu container terminal</div>
+      <div class="card-desc">Kazakh rail container terminal in the Almaty region, cited in 2025 Astana summit outcomes as part of trade-facilitation infrastructure along the Eurasian corridor.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Logistics terminal</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGREEMENTS -->
+<section id="agreements">
+  <div class="section-header">
+    <h2 class="section-title">Agreements & summits</h2>
+    <span class="section-count">12 entities</span>
+  </div>
+  <div class="two-col">
+    <div>
+      <div class="info-block"><h3>Summits</h3></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">May 2023 · Xi'an, China</div>
+          <div class="tl-title">2023 China–Central Asia Summit</div>
+          <div class="tl-type">Summit · Established C5+1 mechanism & Secretariat</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">June 2025 · Astana, Kazakhstan</div>
+          <div class="tl-title">2025 China–Central Asia Summit</div>
+          <div class="tl-type">Summit · Signed Treaty on Good-Neighborly Relations</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">December 2024</div>
+          <div class="tl-title">5th China–Central Asia Foreign Ministers' Meeting</div>
+          <div class="tl-type">Joint statement · Diplomatic coordination</div>
+        </div>
+      </div>
+
+      <div class="info-block" style="margin-top:2rem;"><h3>Declarations & treaties</h3></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">May 2023</div>
+          <div class="tl-title">Xi'an Declaration</div>
+          <div class="tl-type">Declaration · C5+1 principles</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">June 2025</div>
+          <div class="tl-title">Astana Declaration</div>
+          <div class="tl-type">Declaration · 2025 summit outcomes</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">June 2025</div>
+          <div class="tl-title">Treaty on Permanent Good-Neighborly Relations, Friendship, and Cooperation</div>
+          <div class="tl-type">Treaty · All five Central Asian states</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-block"><h3>Project & commercial agreements</h3></div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">September 2013</div>
+          <div class="tl-title">Line D intergovernmental agreements</div>
+          <div class="tl-type">Intergovernmental agreement · IGA signed</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">May 2004</div>
+          <div class="tl-title">Kazakhstan–China oil and gas cooperation framework</div>
+          <div class="tl-type">Intergovernmental agreement · In force</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">July 2007</div>
+          <div class="tl-title">Turkmenistan–China gas purchase and sale agreement</div>
+          <div class="tl-type">Commercial agreement · 30-year term, expires 2037</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">June 2024</div>
+          <div class="tl-title">CKU railway intergovernmental agreement</div>
+          <div class="tl-type">Intergovernmental agreement · Signed</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">December 2025</div>
+          <div class="tl-title">CKU railway financing agreement</div>
+          <div class="tl-type">Financing agreement · US$2.3B loan · Financial close</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">January 2024</div>
+          <div class="tl-title">China–Uzbekistan all-weather comprehensive strategic partnership</div>
+          <div class="tl-type">Bilateral partnership · Upgraded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTITUTIONS -->
+<section id="institutions">
+  <div class="section-header">
+    <h2 class="section-title">Institutions & companies</h2>
+    <span class="section-count">16 entities</span>
+  </div>
+  <div class="info-block"><h3>Multilateral mechanisms</h3></div>
+  <div class="card-grid" style="margin-bottom:2rem;">
+    <div class="card">
+      <div class="card-title">Shanghai Cooperation Organisation</div>
+      <div class="card-desc">Intergovernmental organisation founded June 2001. Members include China, Russia, Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan, India, Pakistan, Iran, and Belarus.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2001</span><span class="tag">Diplomacy · Security</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Belt and Road Initiative</div>
+      <div class="card-desc">Chinese state initiative announced September 2013 encompassing infrastructure, trade, and financial connectivity across Eurasia, Africa, and beyond.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2013</span><span class="tag">Infrastructure · Finance</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Central Asia mechanism</div>
+      <div class="card-desc">C5+1 intergovernmental mechanism formalised in 2020 for coordination between China and the five Central Asian states at head-of-state level.</div>
+      <div class="card-meta"><span class="tag status-operational">Operational</span><span class="tag">Since 2020</span><span class="tag">Diplomacy</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Central Asia Secretariat</div>
+      <div class="card-desc">Permanent administrative body of the C5+1 mechanism, launched March 2024 in Xi'an to support summit preparation and follow-up implementation.</div>
+      <div class="card-meta"><span class="tag status-operational">Launched March 2024</span><span class="tag">Secretariat</span></div>
+    </div>
+  </div>
+
+  <div class="info-block"><h3>Chinese state actors</h3></div>
+  <div class="card-grid" style="margin-bottom:2rem;">
+    <div class="card">
+      <div class="card-title">China National Petroleum Corporation</div>
+      <div class="card-desc">Chinese state-owned oil and gas company. Operates upstream assets in Turkmenistan, Uzbekistan, and Kazakhstan. Key pipeline operator.</div>
+      <div class="card-meta"><span class="tag">State-owned enterprise</span><span class="tag">Energy</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China Development Bank</div>
+      <div class="card-desc">Chinese policy bank providing development financing. Major lender for the Galkynysh gas field (US$7.1B) and CKU railway syndicate.</div>
+      <div class="card-meta"><span class="tag">Policy bank</span><span class="tag">Finance</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Export-Import Bank of China</div>
+      <div class="card-desc">Chinese policy bank specialising in export credits and concessional loans for overseas infrastructure. Active across all five Central Asian states.</div>
+      <div class="card-meta"><span class="tag">Policy bank</span><span class="tag">Finance</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China Railway Group</div>
+      <div class="card-desc">Chinese state-owned rail construction company. Lead contractor for the China-Kyrgyzstan-Uzbekistan railway and Third China-Kazakhstan railway link.</div>
+      <div class="card-meta"><span class="tag">State-owned enterprise</span><span class="tag">Infrastructure</span></div>
+    </div>
+  </div>
+
+  <div class="info-block"><h3>Central Asian state companies</h3></div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">KazMunayGas</div>
+      <div class="card-desc">Kazakh national oil and gas company. Partner in Central Asia-China pipeline and Kazakhstan-China oil pipeline operations.</div>
+      <div class="card-meta"><span class="tag">Kazakhstan</span><span class="tag">Energy</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Turkmengaz</div>
+      <div class="card-desc">Turkmen state gas concern. Counterparty to the 30-year gas purchase and sale agreement with CNPC supplying the Central Asia-China pipeline.</div>
+      <div class="card-meta"><span class="tag">Turkmenistan</span><span class="tag">Energy</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Uzbekneftegaz</div>
+      <div class="card-desc">Uzbek state oil and gas company. Partner with CNPC on the Amu Darya Right Bank gas project and pipeline transit arrangements.</div>
+      <div class="card-meta"><span class="tag">Uzbekistan</span><span class="tag">Energy</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">KazTransOil</div>
+      <div class="card-desc">Kazakh oil transportation subsidiary of KazMunayGas, operating the Atyrau-Alashankou oil pipeline to China.</div>
+      <div class="card-meta"><span class="tag">Kazakhstan</span><span class="tag">Energy · Infrastructure</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Kazakhstan Temir Zholy</div>
+      <div class="card-desc">Kazakh national railway company. Operates Khorgos Gateway and Zhetysu container terminal; key partner in Eurasian freight corridor development.</div>
+      <div class="card-meta"><span class="tag">Kazakhstan</span><span class="tag">Infrastructure · Trade</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">China–Kyrgyzstan–Uzbekistan Railway Company</div>
+      <div class="card-desc">Trilateral SPV established as borrower of the US$2.3 billion loan and future operator of the CKU railway. Financial close reached December 2025.</div>
+      <div class="card-meta"><span class="tag">Joint venture</span><span class="tag">Infrastructure · Finance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAIMS -->
+<section id="claims">
+  <div class="section-header">
+    <h2 class="section-title">Contested claims</h2>
+    <span class="section-count">6 entities · modelled as Claims, not neutral facts</span>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;max-width:640px;">The following assertions are analytically significant but contested. They are modelled as <strong>Claim</strong> entities in the graph — distinct from verified facts — with source citations and country mappings.</p>
+  <div class="claim-list">
+    <div class="claim-item">
+      <div class="claim-marker">C1</div>
+      <div>
+        <div class="claim-text">Kyrgyzstan faces debt exposure from Chinese lending</div>
+        <div class="claim-countries">Countries: Kyrgyzstan · China &nbsp;·&nbsp; Sectors: Finance</div>
+      </div>
+    </div>
+    <div class="claim-item">
+      <div class="claim-marker">C2</div>
+      <div>
+        <div class="claim-text">Turkmenistan is over-dependent on China as a gas buyer</div>
+        <div class="claim-countries">Countries: Turkmenistan · China &nbsp;·&nbsp; Sectors: Energy</div>
+      </div>
+    </div>
+    <div class="claim-item">
+      <div class="claim-marker">C3</div>
+      <div>
+        <div class="claim-text">Central Asia–China pipeline routes deliberately bypass Russia</div>
+        <div class="claim-countries">Countries: China · Kazakhstan · Turkmenistan · Uzbekistan &nbsp;·&nbsp; Sectors: Energy · Security</div>
+      </div>
+    </div>
+    <div class="claim-item">
+      <div class="claim-marker">C4</div>
+      <div>
+        <div class="claim-text">Chinese security infrastructure operates in Tajikistan's Gorno-Badakhshan region</div>
+        <div class="claim-countries">Countries: China · Tajikistan &nbsp;·&nbsp; Sectors: Security &nbsp;·&nbsp; Sources: Washington Post, RFE/RL</div>
+      </div>
+    </div>
+    <div class="claim-item">
+      <div class="claim-marker">C5</div>
+      <div>
+        <div class="claim-text">Central Asian public sentiment toward China has grown more negative</div>
+        <div class="claim-countries">Countries: Kazakhstan · Kyrgyzstan · Tajikistan · Turkmenistan · Uzbekistan &nbsp;·&nbsp; Sources: Lowy Institute, Central Asia Barometer</div>
+      </div>
+    </div>
+    <div class="claim-item">
+      <div class="claim-marker">C6</div>
+      <div>
+        <div class="claim-text">Central Asian states pursue multi-vector foreign policy rather than alignment with Beijing</div>
+        <div class="claim-countries">Countries: All five Central Asian states &nbsp;·&nbsp; Sectors: Diplomacy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADE -->
+<section id="trade">
+  <div class="section-header">
+    <h2 class="section-title">Trade statistics</h2>
+    <span class="section-count">2024 bilateral trade volumes · USD billions</span>
+  </div>
+
+  <div class="overview-grid" style="margin-bottom:2rem;">
+    <div class="ov-cell" style="grid-column:span 2;"><div class="ov-num" style="color:var(--accent2);">US$94.8B</div><div class="ov-label">Total China–Central Asia trade 2024</div></div>
+    <div class="ov-cell"><div class="ov-num">44.0</div><div class="ov-label">Kazakhstan (US$B)</div></div>
+    <div class="ov-cell"><div class="ov-num">13.8</div><div class="ov-label">Uzbekistan (US$B)</div></div>
+    <div class="ov-cell"><div class="ov-num">10.6</div><div class="ov-label">Turkmenistan (US$B)</div></div>
+    <div class="ov-cell"><div class="ov-num">22.7</div><div class="ov-label">Kyrgyzstan (US$B)*</div></div>
+    <div class="ov-cell"><div class="ov-num">3.9</div><div class="ov-label">Tajikistan (US$B)</div></div>
+  </div>
+
+  <table class="trade-table">
+    <thead>
+      <tr>
+        <th>Bilateral pair</th>
+        <th>Value (US$B)</th>
+        <th>Volume</th>
+        <th>Source note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>China–Kazakhstan</strong></td>
+        <td><div class="trade-value">44.0</div><div class="trade-note">2024 · Record high</div></td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+        <td><span style="font-size:12px;color:var(--muted);">PRC MFA summit readout, June 2025. Two-way aggregate.</span></td>
+      </tr>
+      <tr>
+        <td><strong>China–Kyrgyzstan</strong></td>
+        <td><div class="trade-value">22.7</div><div class="trade-note">2024 · PRC customs figure*</div></td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:52%"></div></div></td>
+        <td><span style="font-size:12px;color:var(--muted);">*Anomalously high vs Kyrgyz GDP (~US$14–16B). Likely includes re-export transit. Kyrgyz-side figure ~US$3–4B.</span></td>
+      </tr>
+      <tr>
+        <td><strong>China–Uzbekistan</strong></td>
+        <td><div class="trade-value">13.8</div><div class="trade-note">2024 · Two-way aggregate</div></td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:31%"></div></div></td>
+        <td><span style="font-size:12px;color:var(--muted);">PRC General Administration of Customs. Consistent with 50%+ growth 2022–2023.</span></td>
+      </tr>
+      <tr>
+        <td><strong>China–Turkmenistan</strong></td>
+        <td><div class="trade-value">10.6</div><div class="trade-note">2024 · Gas-dominated</div></td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:24%"></div></div></td>
+        <td><span style="font-size:12px;color:var(--muted);">Oil and gas typically 85–95% of total. PRC customs via industry reporting.</span></td>
+      </tr>
+      <tr>
+        <td><strong>China–Tajikistan</strong></td>
+        <td><div class="trade-value">3.9</div><div class="trade-note">2024 · Approximate</div></td>
+        <td><div class="bar-wrap"><div class="bar-fill" style="width:9%"></div></div></td>
+        <td><span style="font-size:12px;color:var(--muted);">PRC General Administration of Customs aggregate. Cross-check with Tajik statistical agency recommended.</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--muted);margin-top:1rem;">All figures from PRC customs sources, 2024 full year. Methodology varies; aggregate two-way trade unless noted. The Kyrgyzstan figure is a known methodological outlier — see source note above.</p>
+</section>
+
+<footer>
+  China–Central Asia Relations · Geo World Affairs · Dataset v2 · Built with Geo Curator Program
+</footer>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 52, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
